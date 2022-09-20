@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <title>Calculadora</title>
+    <meta name="author" content="Leonardo Lopes da Luz" />
+    <meta name="date" content="2022-09-05" />
+    <meta name="copyright" content="LeoTech Informática" />
+    <meta name="keywords" content="calculadora" />
+    <meta name="description" content="Calculadora feita em HTML5 + CSS + JS" />
+    <meta name="viewport" content="width=device.width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="./w3.css" />    
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      .fundo{
+        background-image: linear-gradient(45deg, black, crimson);
+        height: 100vh;
+        color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .calculadora{
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.8);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 15px;
+        padding: 15px;
+      }
+      button{
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+        cursor: pointer;
+        background-color: rgb(31,31,31);
+        color: #fff;
+        border: none;
+      }
+      button:hover{
+        background-color: black;
+      }
+      #resultado{
+        width: 209px;
+        height: 30px;
+        margin: 5px;
+        padding: 5px;
+        background-color: #fff;
+        color: #000;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body class="w3-responsive">
+	  <div class="fundo">
+		<h1 class="w3-center">Calculadora JS</h1>        
+        <div class="calculadora">
+          <h1 class="w3-center">Calculadora</h1>
+          <p id="resultado"></p>
+          <table>
+            <tr>
+              <td><button onclick="limpar()">C</button></td>
+              <td><button onclick="apagar()"><</button></td>
+              <td><button onclick="insert('/')">/</button></td>
+              <td><button onclick="insert('*')">X</button></td>
+            </tr>
+            <tr>
+              <td><button onclick="insert('7')">7</button></td>
+              <td><button onclick="insert('8')">8</button></td>
+              <td><button onclick="insert('9')">9</button></td>
+              <td><button onclick="insert('-')">-</button></td>
+            </tr>
+            <tr>
+              <td><button onclick="insert('4')">4</button></td>
+              <td><button onclick="insert('5')">5</button></td>
+              <td><button onclick="insert('6')">6</button></td>
+              <td><button onclick="insert('+')">+</button></td>
+            </tr>
+            <tr>
+              <td><button onclick="insert('1')">1</button></td>
+              <td><button onclick="insert('2')">2</button></td>
+              <td><button onclick="insert('3')">3</button></td>
+              <td rowspan="2"><button onclick="calcular()" style="height: 106px;">=</button></td>
+            </tr>
+            <tr>
+              <td colspan="2"><button onclick="insert('0')" style="width: 106px;">0</button></td>
+              <td><button onclick="insert('.')">.</button></td>
+            </tr>          
+          </table>
+
+        </div>
+    </div>
+    <script>
+      function insert(num){
+        var numero = document.getElementById('resultado').innerHTML;
+        document.getElementById('resultado').innerHTML = numero + num;
+      }
+      function limpar(){
+        document.getElementById('resultado').innerHTML = "";
+      }
+      function apagar(){
+        var resultado = document.getElementById('resultado').innerHTML;
+        document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length-1);
+      }
+      function calcular(){
+        var resultado = document.getElementById('resultado').innerHTML;
+        if(resultado){
+          document.getElementById('resultado').innerHTML = eval(resultado);
+        }
+        else{
+          document.getElementById('resultado').innerHTML = "0"
+        }
+      }
+    </script>
+	  <footer class="w3-container w3-bottom w3-center w3-black">LeoTech Informática - 2022</footer>  
+  </body>
+</html>
